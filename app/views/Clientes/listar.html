@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Clientes e serviços' /}
+
+<div class="container" style="margin-top: 110px">
+<h3 style="font-weight: 700; ">Lista de clientes:</h3>
+
+<form action="@{Clientes.listar}" class="row g-3">
+
+	<div class="input-group">
+    	<input type="text" name="termo" class="form-control" placeholder="Termo de busca" aria-label="Termo de busca" aria-describedby="button-addon2">
+    	<button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar</button>
+	</div>
+
+	#{if termo}
+		<small>Procurando por ${termo}</small>
+	#{/if}
+	#{else}
+		<small>Exibindo Todos</small>
+	#{/else}
+</form></br>
+
+<table class="table table-hover ">
+	<thead class="table-light">
+	 	<tr>
+      		<th>Nome</th>
+      		<th>Email</th>
+      		<th>Telefone</th>
+      		<th>Área de atuação</th>
+      		<th>Serviço</th>
+      		<th>Ações</th>
+      	</tr>
+	</thead>
+	<tbody class="table-group-divider">
+		#{list items:cliente, as:'c'}
+		<tr>
+      		<td>${c.nome}</td>
+      		<td>${c.email}</a></td>
+      		<td>${c.phone}</td>
+      		<td>${c.areaAtuacao}</td>
+      		<td>${c.servico}</td>
+      		<td><a href="@{Clientes.remover(c.id)}" class="btn btn-danger btn-sm">Remover</a>
+      		<a href="@{Clientes.editar(c.id)}" class="btn btn-info btn-sm">Editar</td>
+      	</tr>
+      	#{/list}
+	</tbody>
+</table>
+
+<a href="@{Clientes.form}" class="btn btn-warning btn-sm">Solicitar um novo serviço</a>
+</div>

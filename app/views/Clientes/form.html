@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Formulário de solicitação de serviços' /}
+
+<div class="container" style="margin-top: 80px">
+<form action="@{Clientes.salvar}" method="post">
+	<input type="hidden" name="c.id" value="${cli?.id}" class="form-control"/><br />
+
+	<label class="form-label">Nome:</label>
+	<input type="text" name="c.nome" value="${cli?.nome}" class="form-control"><br/>
+	
+	<label class="form-label">Email:</label>
+	<input type="text" name="c.email" value="${cli?.email}" class="form-control"><br/>
+	
+	<label class="form-label">Telefone:</label>
+	<input type="text" name="c.phone" value="${cli?.phone}" class="form-control"><br/>
+	
+	<label class="form-label">Sua área de atuação:</label>
+	<input type="text" name="c.areaAtuacao" value="${cli?.areaAtuacao}" class="form-control"><br/>
+	
+	<label class="form-label">Serviço que deseja:</label>
+	<select name="c.servico" value="${cli?.servico}" class="form-select">
+		<option value="Conteúdo para o Instagram">Conteúdo para o Instagram</option>
+		<option value="Serviço fotográfico">Serviço fotográfico</option>
+		<option value="Produção de um vídeo">Produção de um vídeo</option>
+	</select><br/>
+	
+	<input type="submit" value="${cli ? 'Editar':'Registrar'}" class="btn" 
+	style="color: #fff; background-color: #EB3E00">
+</form>
+
+</div>
